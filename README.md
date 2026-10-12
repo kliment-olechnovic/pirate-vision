@@ -8,7 +8,7 @@ Spinning direction matters: if your left eye is covered - spin left, if your rig
 
 It is called **Pirate Vision** because when one of your eyes is covered, you look like a pirate.
 
-This page describes how to setup and use **Pirate Vision** with popular molecular viewers.
+This page describes how to setup and use **Pirate Vision** with some popular molecular viewers.
 
 ## Equipment
 
@@ -87,3 +87,69 @@ To stop, run `pirate` with zero speed:
 pirate 0
 ```
 
+## ChimeraX
+
+First, let's define the `pirate` command, using the following script:
+
+```
+from chimerax.core.commands import CmdDesc, FloatArg, register, run
+from chimerax.core.errors import UserError
+
+def pirate(session, speed=90):
+    try:
+        run(session, "perframe stop")
+    except UserError as e:
+        if "No per-frame command active" not in str(e):
+            raise
+
+    if speed != 0:
+        run(session, f'perframe "turn y {-speed / 60}"')
+
+register(
+    'pirate',
+    CmdDesc(
+        optional=[('speed', FloatArg)],
+        synopsis='Spin the molecule for Pirate Vision'
+    ),
+    pirate,
+    logger=session.logger
+)
+```
+
+Download this script as [`chimerax_pirate_vision.py`](scripts/chimerax_pirate_vision.py) and run it:
+
+```
+open chimerax_pirate_vision.py
+```
+
+The load or fetch a structure, for example:
+
+```
+open 2zsk.cif
+```
+
+Setup the view in any way you wish (it also can be adjusted an any time later) It is recommended (but not super necessary) to set the background to white:
+
+```
+set bgColor white
+```
+
+Then, run the `pirate` command, prividing speed (angles per second) as the only parameter.
+
+Pirates with a filter on the **left** eye should run `pirate` with positive speed, for example:
+
+```
+pirate 90
+```
+
+Pirates with a filter on the **right** eye should run `pirate` with negative speed, for example:
+
+```
+pirate -90
+```
+
+To stop, run `pirate` with zero speed:
+
+```
+pirate 0
+```
