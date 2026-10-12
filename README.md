@@ -24,6 +24,7 @@ This section explains how to use **Pirate Vision** with the following popular mo
 * JMol
 * PyMol
 * ChimeraX
+* Mol\*
 
 ### JMol
 
@@ -195,4 +196,25 @@ To stop, run `pirate` with zero speed:
 ```
 pirate 0
 ```
+
+### Mol\*
+
+Mol\* is compatible with **Pirate Vision** out of the box - just not through scripting, but from GUI,
+
+Open a molecular structure in Mol*, for example, [PDB 2ZSK](https://www.rcsb.org/3d-view/2ZSK).
+
+Open the *"Settings/Control Info"* panel (the settings icon on the right border of the 3D scene, near the upper-right corner).
+
+Under *"Animate"*, select *"Spin"*.
+
+Using the config button that appears near near the selected *Spin* option, configure the spinning parameters:
+
+* Set *"Axis"* to (`[0, 1, 0]`) for pirates with a filter on the **right** eye, or to (`[0, -1, 0]`) pirates with a filter on the **right** eye.
+* Adjust *"Speed"* to your preference using the interactive slider. Note that setting negative speed reverses the spinning direction.
+
+The background can also be changed to white in the same settings panel.
+
+To stop spinning, change *"Animate"* to *"Off"*.
+
+Alternatively, press `i` to toggle spinning on or off - but the axis and the speed are preset when spin is toggled with `i`.
 
