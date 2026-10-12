@@ -1,0 +1,313 @@
+/*
+ * PIRATE VISION / VINTAGE FIELD MANUAL
+ * A battered nautical chart meets an early-1980s scientific terminal.
+ * No web fonts, scripts, external textures, or assets required.
+ */
+:root {
+  color-scheme: light;
+  --ink: #263432;
+  --ink-soft: #53605b;
+  --ocean: #254c50;
+  --ocean-dark: #152b31;
+  --oxblood: #872f2b;
+  --brass: #a27a40;
+  --brass-light: #cfb27c;
+  --paper: #f7efd9;
+  --paper-light: #fffbef;
+  --parchment: #e9dac0;
+  --line: #c8b593;
+  --screen: #192b30;
+  --screen-text: #e1edd9;
+  --body-width: 1210px;
+  --nav-width: 235px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 22px; }
+body {
+  max-width: var(--body-width);
+  min-height: 100vh;
+  padding: 28px 32px 90px;
+  margin: auto;
+  color: var(--ink);
+  font: 17px/1.75 Georgia, 'Times New Roman', serif;
+  background: transparent;
+  display: grid;
+  grid-template-columns: var(--nav-width) minmax(0, 1fr);
+  column-gap: 32px;
+  align-content: start;
+}
+html {
+  background-color: #e9dec5;
+  background-image:
+    radial-gradient(ellipse at 14% 1%, rgba(255,251,229,.78), transparent 47%),
+    radial-gradient(ellipse at 94% 26%, rgba(141,94,47,.075), transparent 53%),
+    repeating-linear-gradient(0deg, rgba(64,55,34,.016) 0, rgba(64,55,34,.016) 1px, transparent 1px, transparent 5px);
+}
+::selection { background: #d8b882; color: var(--ocean-dark); }
+:focus-visible { outline: 3px solid var(--oxblood); outline-offset: 3px; }
+a { color: #80502d; text-decoration-color: #ba8d59; text-underline-offset: .19em; }
+a:hover { color: var(--oxblood); text-decoration-thickness: 2px; }
+
+/* NAVAL ACADEMY / MASTHEAD */
+#title-block-header {
+  grid-column: 1 / -1;
+  margin: 0 0 28px;
+  padding: clamp(30px, 5.5vw, 68px) clamp(25px, 5.2vw, 74px) 29px;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  color: #fff4d8;
+  border: 1px solid #101e23;
+  outline: 3px double var(--brass);
+  outline-offset: -10px;
+  background-color: var(--ocean-dark);
+  background-image:
+    radial-gradient(ellipse at 87% 15%, rgba(151,100,59,.24), transparent 39%),
+    repeating-linear-gradient(0deg, rgba(239,231,197,.018) 0, rgba(239,231,197,.018) 1px, transparent 1px, transparent 6px),
+    linear-gradient(115deg, #1b3c3f, #13262e 65%, #243331);
+  box-shadow: 0 13px 34px rgba(56,43,28,.16);
+}
+#title-block-header::before {
+  content: "EST. 198X    /    MOLECULAR VISUALIZATION FIELD MANUAL";
+  display: block;
+  margin-bottom: 14px;
+  font: bold 11px/1.5 'Courier New', Courier, monospace;
+  letter-spacing: .15em;
+  color: #d5bd8e;
+}
+#title-block-header::after {
+  content: "ONE LENS. FULL DEPTH. NO TREASURE REQUIRED.";
+  display: block;
+  margin-top: 22px;
+  padding-top: 14px;
+  max-width: 700px;
+  border-top: 1px solid rgba(206,177,117,.48);
+  color: #ebce93;
+  font: bold clamp(10px, 1.3vw, 13px)/1.5 'Courier New', Courier, monospace;
+  letter-spacing: .13em;
+}
+h1.title {
+  font-family: Georgia, 'Times New Roman', serif;
+  margin: 0;
+  font-size: clamp(48px, 7.2vw, 94px);
+  line-height: .99;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-shadow: 3px 3px 0 rgba(126,78,44,.58), 0 6px 0 rgba(0,0,0,.13);
+}
+
+/* CAPTAIN'S LOG: STICKY TABLE OF CONTENTS */
+#TOC {
+  grid-column: 1;
+  grid-row: 2 / span 8;
+  align-self: start;
+  position: sticky;
+  top: 24px;
+  min-width: 0;
+  padding: 20px 17px 22px;
+  color: var(--ink);
+  background: linear-gradient(#f7eed9, #ebdcc1);
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 4px rgba(252,246,229,.7), 3px 5px 0 rgba(125,102,69,.14);
+}
+#TOC::before {
+  content: "THE NAVIGATION CHART";
+  display: block;
+  padding-bottom: 13px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--brass);
+  font: bold 11px/1.5 'Courier New', Courier, monospace;
+  color: var(--oxblood);
+  letter-spacing: .065em;
+}
+#TOC ul { list-style: none; padding: 0; margin: 0; }
+#TOC > ul > li { margin: 0 0 10px; }
+#TOC a {
+  display: block;
+  color: var(--ocean-dark);
+  font: bold 14px/1.4 'Trebuchet MS', Arial, sans-serif;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  padding: 7px 4px 7px 10px;
+  overflow-wrap: anywhere;
+}
+#TOC a:hover, #TOC a:focus-visible { color: var(--oxblood); border-left-color: var(--oxblood); background: rgba(184,134,79,.13); }
+#TOC > ul > li > ul { margin: 3px 0 6px 11px; border-left: 1px solid var(--line); }
+#TOC > ul > li > ul a { font: 13px/1.35 'Courier New', Courier, monospace; padding: 7px 4px 7px 12px; }
+#TOC > ul > li > ul > li ul { display: none; }
+
+/* READING PAGES */
+body > section.level2 {
+  grid-column: 2;
+  min-width: 0;
+  padding: clamp(24px, 3.8vw, 45px) clamp(19px, 3.6vw, 43px);
+  margin: 0 0 24px;
+  background-color: var(--paper-light);
+  background-image: linear-gradient(112deg, rgba(229,212,169,.13), transparent 42%);
+  border: 1px solid #cdbb99;
+  border-top: 5px solid var(--oxblood);
+  box-shadow: 4px 7px 0 rgba(119,101,72,.105), inset 0 0 0 6px rgba(240,230,206,.34);
+}
+section { min-width: 0; }
+section > :last-child { margin-bottom: 0; }
+h2, h3 { text-wrap: balance; }
+h2 {
+  margin: -4px 0 28px;
+  padding: 0 0 15px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ocean-dark);
+  font: bold clamp(29px, 4.1vw, 43px)/1.15 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.025em;
+}
+h2::before { content: "◆"; color: var(--brass); font-size: .45em; vertical-align: middle; margin-right: 12px; }
+h3 {
+  margin: 1.8em 0 .9em;
+  color: var(--oxblood);
+  font: bold clamp(23px, 3.2vw, 30px)/1.2 Georgia, 'Times New Roman', serif;
+}
+p { margin: 0 0 1.18em; }
+strong { color: #203b3e; }
+ul, ol { padding-left: 1.55rem; }
+li { margin-bottom: .35em; }
+li::marker { color: var(--oxblood); }
+
+/* COMIC PLATES */
+p:has(> img) { margin: 20px 0 26px; }
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgba(55,48,37,.8);
+  background: #d1c2a5;
+  box-shadow: 5px 6px 0 rgba(64,53,37,.16);
+}
+/* Override the fixed 350/500px widths in the original README. */
+#idea p > img[style] {
+  width: 100% !important;
+  max-width: 100%;
+  margin: 0 !important;
+}
+#idea > p:first-of-type { margin-top: 4px; }
+#equipment {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 275px);
+  column-gap: 19px;
+  row-gap: 18px;
+  align-items: stretch;
+}
+#equipment > h2 { grid-column: 1 / -1; margin-bottom: 6px; }
+#equipment > p { margin: 0; min-width: 0; }
+#equipment > p:nth-of-type(odd) {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 17px 20px;
+  border-left: 4px solid var(--brass);
+  background: #f2e6ce;
+}
+#equipment > p:nth-of-type(even) > img[style] {
+  width: 100% !important;
+  height: 100%;
+  max-height: 210px;
+  margin: 0 !important;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* RECIPES LOOK LIKE PAGES OF A TECHNICAL LOGBOOK */
+#recipes-for-popular-molecular-viewers > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 8px;
+  padding: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+#recipes-for-popular-molecular-viewers > ul li {
+  margin: 0;
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+  background: #f2e7d0;
+  color: var(--ocean-dark);
+  font: bold 12px/1.4 'Courier New', Courier, monospace;
+}
+#recipes-for-popular-molecular-viewers { counter-reset: manual; }
+#recipes-for-popular-molecular-viewers > section.level3 {
+  counter-increment: manual;
+  margin: 23px 0 30px;
+  padding: 22px 0 2px;
+  border-top: 3px double var(--brass);
+}
+#recipes-for-popular-molecular-viewers > section.level3 > h3 { margin: 0 0 18px; }
+#recipes-for-popular-molecular-viewers > section.level3 > h3::before {
+  content: "0" counter(manual) " / ";
+  vertical-align: .09em;
+  font: bold 14px 'Courier New', Courier, monospace;
+  letter-spacing: .05em;
+  color: var(--brass);
+}
+
+/* EARLY-80s TERMINAL, BUT CLEAN ENOUGH TO COPY AND USE */
+pre {
+  margin: 10px 0 19px;
+  padding: 16px 18px;
+  border: 1px solid #1b2e2c;
+  border-left: 5px solid #9c7745;
+  background-color: var(--screen);
+  background-image: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(233,246,227,.018) 3px, rgba(233,246,227,.018) 4px);
+  color: var(--screen-text);
+  font: 14px/1.58 'Courier New', Courier, monospace;
+  overflow-x: auto;
+  tab-size: 4;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 2px 3px 0 rgba(48,42,27,.17);
+}
+pre code { color: inherit; padding: 0; border: 0; background: none; font: inherit; white-space: pre; overflow-wrap: normal; }
+:not(pre) > code {
+  padding: .12em .33em;
+  color: #6a3028;
+  border: 1px solid #d8c7a6;
+  background: #f2e7d0;
+  font: .85em 'Courier New', Courier, monospace;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  body { display: block; padding: 20px 18px 60px; }
+  #title-block-header { margin-bottom: 24px; }
+  #TOC { position: static; margin-bottom: 22px; padding: 14px 16px; }
+  #TOC::before { padding-bottom: 8px; margin-bottom: 7px; }
+  #TOC > ul { display: flex; flex-wrap: wrap; gap: 4px 13px; }
+  #TOC > ul > li { margin-bottom: 0; }
+  #TOC > ul > li > ul { display: flex; flex-wrap: wrap; gap: 2px; margin-left: 0; }
+  #TOC > ul > li > ul a { padding-left: 9px; }
+  body > section.level2 { margin-bottom: 18px; }
+}
+@media (max-width: 590px) {
+  body { padding: 12px 11px 48px; font-size: 16px; line-height: 1.65; }
+  #title-block-header { padding: 26px 20px 21px; }
+  #title-block-header::before { font-size: 9px; letter-spacing: .09em; }
+  #title-block-header::after { font-size: 10px; letter-spacing: .075em; }
+  body > section.level2 { padding: 24px 17px 28px; }
+  #equipment { display: block; }
+  #equipment > h2 { margin-bottom: 18px; }
+  #equipment > p:nth-of-type(odd) { padding: 12px 14px; }
+  #equipment > p:nth-of-type(even) { margin: 0 0 20px; }
+  #equipment > p:nth-of-type(even) > img[style] { height: auto; max-height: none; }
+  h2 { margin-bottom: 18px; }
+  pre { font-size: 12.5px; padding: 13px 11px; }
+  #TOC > ul { display: block; }
+  #TOC > ul > li > ul a { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  html { background: white; }
+  body { display: block; max-width: none; padding: 0; margin: 0; color: black; background: white; font-size: 11pt; }
+  #TOC { display: none; }
+  #title-block-header { box-shadow: none; }
+  body > section.level2 { box-shadow: none; break-inside: avoid-page; }
+  pre { background: #eee; color: black; box-shadow: none; white-space: pre-wrap; }
+  a { color: black; }
+}

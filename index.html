@@ -22,12 +22,7 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <style type="text/css">
-  a { color: #0000CC; }
-  td { padding-right: 1em; }
-  pre { background-color: #EEEEEE; padding: 1em; }
-  div#TOC > ul > li > ul > li ul { display: none; }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <header id="title-block-header">
@@ -46,7 +41,8 @@
 </ul></li>
 </ul>
 </nav>
-<h2 id="idea">Idea</h2>
+<section id="idea" class="level2">
+<h2>Idea</h2>
 <p><img style="width:500px;margin:10px;" src="images/pirate-at-pc.png"></p>
 <p><strong>Pirate Vision</strong> is an emerging vintage technology that exploits <a href="https://en.wikipedia.org/wiki/Pulfrich_effect">the Pulfrich effect</a> for viewing molecular structures (e.g. protein structures) in 3D.</p>
 <p>Basic idea - open a molecular structure in some viewer, set the animation to spin, cover one eye with a filter (e.g. put on sunglasses with one lence removed), and experience the 3D perception.</p>
@@ -56,14 +52,18 @@
 <p>Just break some sunglasses and try it!</p>
 <p>It also works very well in a classsrom setting.</p>
 <p><img style="width:500px;margin:10px;" src="images/pirate-classroom-smaller.png"></p>
-<h2 id="equipment">Equipment</h2>
+</section>
+<section id="equipment" class="level2">
+<h2>Equipment</h2>
 <p>Sunglasses that cover only a single eye. For example, ordinary sunglasses with one lense removed. Or a tintend monocle.</p>
 <p><img style="width:350px;margin:5px;" src="images/equipment-single-eye-filter.png"></p>
 <p>Molecular viewer software (not necessarily pirated, can be free or even legally purchased) able to do spinning animation.</p>
 <p><img style="width:350px;margin:5px;" src="images/equipment-molecular-viewer.png"></p>
 <p>Both eyes (apologies to real pirates with just a single eye).</p>
 <p><img style="width:350px;margin:5px;" src="images/equipment-both-eyes.png"></p>
-<h2 id="recipes-for-popular-molecular-viewers">Recipes for popular molecular viewers</h2>
+</section>
+<section id="recipes-for-popular-molecular-viewers" class="level2">
+<h2>Recipes for popular molecular viewers</h2>
 <p>This section explains how to use <strong>Pirate Vision</strong> with the following popular molecular viewers:</p>
 <ul>
 <li>JMol</li>
@@ -71,7 +71,8 @@
 <li>ChimeraX</li>
 <li>Mol*</li>
 </ul>
-<h3 id="jmol">JMol</h3>
+<section id="jmol" class="level3">
+<h3>JMol</h3>
 <p>JMol is compatible with <strong>Pirate Vision</strong> out of the box - it has the <code>spin</code> command that can be used.</p>
 <p>Just load or fetch a structure, for example</p>
 <pre><code>load =2zsk</code></pre>
@@ -84,7 +85,9 @@
 <pre><code>spin y 90</code></pre>
 <p>To stop, run:</p>
 <pre><code>spin off</code></pre>
-<h3 id="pymol">Pymol</h3>
+</section>
+<section id="pymol" class="level3">
+<h3>Pymol</h3>
 <p>First, let’s define the <code>pirate</code> command.</p>
 <p>Paste the following command to the Pymol command prompt:</p>
 <pre><code>python
@@ -121,7 +124,9 @@ python end</code></pre>
 <pre><code>pirate -90</code></pre>
 <p>To stop, run <code>pirate</code> with zero speed:</p>
 <pre><code>pirate 0</code></pre>
-<h3 id="chimerax">ChimeraX</h3>
+</section>
+<section id="chimerax" class="level3">
+<h3>ChimeraX</h3>
 <p>First, let’s define the <code>pirate</code> command, using the following script:</p>
 <pre><code>from chimerax.core.commands import CmdDesc, FloatArg, register, run
 from chimerax.core.errors import UserError
@@ -158,7 +163,9 @@ register(
 <pre><code>pirate -90</code></pre>
 <p>To stop, run <code>pirate</code> with zero speed:</p>
 <pre><code>pirate 0</code></pre>
-<h3 id="mol">Mol*</h3>
+</section>
+<section id="mol" class="level3">
+<h3>Mol*</h3>
 <p>Mol* is compatible with <strong>Pirate Vision</strong> out of the box - just not through scripting, but from GUI,</p>
 <p>Open a molecular structure in Mol*, for example, <a href="https://www.rcsb.org/3d-view/2ZSK">PDB 2ZSK</a>.</p>
 <p>Open the <em>“Settings/Control Info”</em> panel (the settings icon on the right border of the 3D scene, near the upper-right corner).</p>
@@ -171,5 +178,7 @@ register(
 <p>The background can also be changed to white in the same settings panel.</p>
 <p>To stop spinning, change <em>“Animate”</em> to <em>“Off”</em>.</p>
 <p>Alternatively, press <code>i</code> to toggle spinning on or off - but the axis and the speed are preset when spin is toggled with <code>i</code>.</p>
+</section>
+</section>
 </body>
 </html>
