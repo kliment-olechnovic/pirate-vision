@@ -8,13 +8,15 @@ Basic idea - open a molecular structure in some viewer, set the animation to spi
 
 Spinning direction matters: if your left eye is covered - spin left, if your right eye is covered - spin right.
 
-<img style="width:500px;margin:10px;" src="images/pirate-classroom-smaller.png">
-
 It is called **Pirate Vision** because when one of your eyes is covered, you look like a pirate.
 
 This page describes how to setup and use **Pirate Vision** with some popular molecular viewers.
 
 Just break some sunglasses and try it!
+
+It also works very well in a classsrom setting.
+
+<img style="width:500px;margin:10px;" src="images/pirate-classroom-smaller.png">
 
 ## Equipment
 
