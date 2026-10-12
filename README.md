@@ -25,7 +25,7 @@ This section explains how to use **Pirate Vision** with the following popular mo
 * PyMol
 * ChimeraX
 
-## JMol
+### JMol
 
 JMol is compatible with **Pirate Vision** out of the box - it has the `spin` command that can be used.
 
@@ -129,7 +129,7 @@ To stop, run `pirate` with zero speed:
 pirate 0
 ```
 
-## ChimeraX
+### ChimeraX
 
 First, let's define the `pirate` command, using the following script:
 
