@@ -10,6 +10,8 @@ It is called **Pirate Vision** because when one of your eyes is covered, you loo
 
 This page describes how to setup and use **Pirate Vision** with some popular molecular viewers.
 
+Just break some sunglasses and try it!
+
 ## Equipment
 
 * Sunglasses that cover only a single eye. For example, ordinary sunglasses with one lense removed. Or a tintend monocle.
