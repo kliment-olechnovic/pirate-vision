@@ -32,7 +32,7 @@ Both eyes (apologies to real pirates with just a single eye).
 
 <img style="width:350px;margin:5px;" src="images/equipment-both-eyes.png">
 
-## Recipes for popular molecular viewers
+## Recipes for molecular viewers
 
 This section explains how to use **Pirate Vision** with the following popular molecular viewers:
 

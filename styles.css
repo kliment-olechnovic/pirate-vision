@@ -1,7 +1,10 @@
+/* Optional 1980s-industrial typefaces; local font stacks work offline. */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
 /*
  * PIRATE VISION / VINTAGE FIELD MANUAL
  * A battered nautical chart meets an early-1980s scientific terminal.
- * No web fonts, scripts, external textures, or assets required.
+ * Web fonts are optional: robust local stacks preserve the design offline.
  */
 :root {
   color-scheme: light;
@@ -30,7 +33,7 @@ body {
   padding: 28px 32px 90px;
   margin: auto;
   color: var(--ink);
-  font: 17px/1.75 Georgia, 'Times New Roman', serif;
+  font: 16.5px/1.7 'IBM Plex Sans', 'PT Sans', 'Trebuchet MS', Arial, sans-serif;
   background: transparent;
   display: grid;
   grid-template-columns: var(--nav-width) minmax(0, 1fr);
@@ -49,53 +52,63 @@ html {
 a { color: #80502d; text-decoration-color: #ba8d59; text-underline-offset: .19em; }
 a:hover { color: var(--oxblood); text-decoration-thickness: 2px; }
 
-/* NAVAL ACADEMY / MASTHEAD */
+/* LOW-PROFILE RETRO-COMPUTER MASTHEAD — about half the previous height. */
 #title-block-header {
   grid-column: 1 / -1;
-  margin: 0 0 28px;
-  padding: clamp(30px, 5.5vw, 68px) clamp(25px, 5.2vw, 74px) 29px;
+  margin: 0 0 20px;
+  padding: 14px 27px 15px;
   min-width: 0;
   position: relative;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 190px);
+  column-gap: 24px;
+  row-gap: 5px;
+  align-items: center;
   color: #fff4d8;
   border: 1px solid #101e23;
   outline: 3px double var(--brass);
-  outline-offset: -10px;
+  outline-offset: -8px;
   background-color: var(--ocean-dark);
   background-image:
     radial-gradient(ellipse at 87% 15%, rgba(151,100,59,.24), transparent 39%),
     repeating-linear-gradient(0deg, rgba(239,231,197,.018) 0, rgba(239,231,197,.018) 1px, transparent 1px, transparent 6px),
     linear-gradient(115deg, #1b3c3f, #13262e 65%, #243331);
-  box-shadow: 0 13px 34px rgba(56,43,28,.16);
+  box-shadow: 0 7px 17px rgba(56,43,28,.13);
 }
 #title-block-header::before {
-  content: "EST. 198X    /    MOLECULAR VISUALIZATION FIELD MANUAL";
+  content: "EST. 198X  //  MOLECULAR VISUALIZATION FIELD MANUAL";
+  grid-column: 1 / -1;
   display: block;
-  margin-bottom: 14px;
-  font: bold 11px/1.5 'Courier New', Courier, monospace;
-  letter-spacing: .15em;
+  margin: 0;
+  font: 600 10px/1.3 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
+  letter-spacing: .115em;
   color: #d5bd8e;
 }
 #title-block-header::after {
-  content: "ONE LENS. FULL DEPTH. NO TREASURE REQUIRED.";
+  content: "ONE LENS.\A FULL DEPTH.\A NO TREASURE REQUIRED.";
+  grid-column: 2;
+  grid-row: 2;
   display: block;
-  margin-top: 22px;
-  padding-top: 14px;
-  max-width: 700px;
-  border-top: 1px solid rgba(206,177,117,.48);
-  color: #ebce93;
-  font: bold clamp(10px, 1.3vw, 13px)/1.5 'Courier New', Courier, monospace;
-  letter-spacing: .13em;
+  margin: 0;
+  padding: 2px 0 2px 17px;
+  border-left: 1px solid rgba(206,177,117,.55);
+  white-space: pre-line;
+  color: #e6cb94;
+  font: 600 10px/1.55 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
+  letter-spacing: .055em;
 }
 h1.title {
-  font-family: Georgia, 'Times New Roman', serif;
+  grid-column: 1;
+  grid-row: 2;
+  font-family: 'Chakra Petch', 'Eurostile', 'URW Gothic', 'Century Gothic', 'Trebuchet MS', sans-serif;
   margin: 0;
-  font-size: clamp(48px, 7.2vw, 94px);
-  line-height: .99;
-  letter-spacing: -.055em;
+  font-size: clamp(36px, 5.1vw, 63px);
+  line-height: 1;
+  letter-spacing: .057em;
   text-transform: uppercase;
-  font-weight: 800;
-  text-shadow: 3px 3px 0 rgba(126,78,44,.58), 0 6px 0 rgba(0,0,0,.13);
+  font-weight: 700;
+  text-shadow: 2px 2px 0 rgba(126,78,44,.7);
 }
 
 /* CAPTAIN'S LOG: STICKY TABLE OF CONTENTS */
@@ -118,7 +131,7 @@ h1.title {
   padding-bottom: 13px;
   margin-bottom: 12px;
   border-bottom: 2px solid var(--brass);
-  font: bold 11px/1.5 'Courier New', Courier, monospace;
+  font: 700 11px/1.5 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
   color: var(--oxblood);
   letter-spacing: .065em;
 }
@@ -127,7 +140,9 @@ h1.title {
 #TOC a {
   display: block;
   color: var(--ocean-dark);
-  font: bold 14px/1.4 'Trebuchet MS', Arial, sans-serif;
+  font: 600 13px/1.4 'Chakra Petch', 'URW Gothic', 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .065em;
   text-decoration: none;
   border-left: 3px solid transparent;
   padding: 7px 4px 7px 10px;
@@ -158,14 +173,17 @@ h2 {
   padding: 0 0 15px;
   border-bottom: 1px solid var(--line);
   color: var(--ocean-dark);
-  font: bold clamp(29px, 4.1vw, 43px)/1.15 Georgia, 'Times New Roman', serif;
-  letter-spacing: -.025em;
+  font: 700 clamp(22px, 2.5vw, 29px)/1.2 'Chakra Petch', 'Eurostile', 'URW Gothic', 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .035em;
 }
 h2::before { content: "◆"; color: var(--brass); font-size: .45em; vertical-align: middle; margin-right: 12px; }
 h3 {
   margin: 1.8em 0 .9em;
   color: var(--oxblood);
-  font: bold clamp(23px, 3.2vw, 30px)/1.2 Georgia, 'Times New Roman', serif;
+  font: 700 clamp(20px, 2.4vw, 28px)/1.2 'Chakra Petch', 'Eurostile', 'URW Gothic', 'Trebuchet MS', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .055em;
 }
 p { margin: 0 0 1.18em; }
 strong { color: #203b3e; }
@@ -231,7 +249,7 @@ img {
   border: 1px solid var(--line);
   background: #f2e7d0;
   color: var(--ocean-dark);
-  font: bold 12px/1.4 'Courier New', Courier, monospace;
+  font: 600 12px/1.4 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
 }
 #recipes-for-popular-molecular-viewers { counter-reset: manual; }
 #recipes-for-popular-molecular-viewers > section.level3 {
@@ -244,7 +262,7 @@ img {
 #recipes-for-popular-molecular-viewers > section.level3 > h3::before {
   content: "0" counter(manual) " / ";
   vertical-align: .09em;
-  font: bold 14px 'Courier New', Courier, monospace;
+  font: 700 14px 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
   letter-spacing: .05em;
   color: var(--brass);
 }
@@ -258,7 +276,7 @@ pre {
   background-color: var(--screen);
   background-image: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(233,246,227,.018) 3px, rgba(233,246,227,.018) 4px);
   color: var(--screen-text);
-  font: 14px/1.58 'Courier New', Courier, monospace;
+  font: 14px/1.58 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
   overflow-x: auto;
   tab-size: 4;
   -webkit-overflow-scrolling: touch;
@@ -270,13 +288,13 @@ pre code { color: inherit; padding: 0; border: 0; background: none; font: inheri
   color: #6a3028;
   border: 1px solid #d8c7a6;
   background: #f2e7d0;
-  font: .85em 'Courier New', Courier, monospace;
+  font: .85em 'IBM Plex Mono', 'Cousine', 'Courier New', monospace;
   overflow-wrap: anywhere;
 }
 
 @media (max-width: 900px) {
   body { display: block; padding: 20px 18px 60px; }
-  #title-block-header { margin-bottom: 24px; }
+  #title-block-header { margin-bottom: 18px; }
   #TOC { position: static; margin-bottom: 22px; padding: 14px 16px; }
   #TOC::before { padding-bottom: 8px; margin-bottom: 7px; }
   #TOC > ul { display: flex; flex-wrap: wrap; gap: 4px 13px; }
@@ -287,9 +305,24 @@ pre code { color: inherit; padding: 0; border: 0; background: none; font: inheri
 }
 @media (max-width: 590px) {
   body { padding: 12px 11px 48px; font-size: 16px; line-height: 1.65; }
-  #title-block-header { padding: 26px 20px 21px; }
-  #title-block-header::before { font-size: 9px; letter-spacing: .09em; }
-  #title-block-header::after { font-size: 10px; letter-spacing: .075em; }
+  #title-block-header {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 15px 18px 16px;
+    row-gap: 4px;
+  }
+  #title-block-header::before { font-size: 8.5px; letter-spacing: .075em; }
+  h1.title { font-size: clamp(34px, 9.2vw, 49px); letter-spacing: .025em; }
+  #title-block-header::after {
+    grid-column: 1;
+    grid-row: 3;
+    border-left: 0;
+    border-top: 1px solid rgba(206,177,117,.46);
+    padding: 5px 0 0;
+    font-size: 8.5px;
+    letter-spacing: .055em;
+    white-space: normal;
+  }
+  #title-block-header::after { content: "ONE LENS  /  FULL DEPTH  /  NO TREASURE REQUIRED"; }
   body > section.level2 { padding: 24px 17px 28px; }
   #equipment { display: block; }
   #equipment > h2 { margin-bottom: 18px; }
