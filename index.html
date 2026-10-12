@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Pirate Vision</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style type="text/css">
+  a { color: #0000CC; }
+  td { padding-right: 1em; }
+  pre { background-color: #EEEEEE; padding: 1em; }
+  div#TOC > ul > li > ul > li ul { display: none; }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Pirate Vision</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#idea" id="toc-idea">Idea</a></li>
+<li><a href="#equipment" id="toc-equipment">Equipment</a></li>
+<li><a href="#recipes-for-popular-molecular-viewers" id="toc-recipes-for-popular-molecular-viewers">Recipes for popular molecular viewers</a>
+<ul>
+<li><a href="#jmol" id="toc-jmol">JMol</a></li>
+<li><a href="#pymol" id="toc-pymol">Pymol</a></li>
+<li><a href="#chimerax" id="toc-chimerax">ChimeraX</a></li>
+<li><a href="#mol" id="toc-mol">Mol*</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="idea">Idea</h2>
+<p><img style="width:500px;margin:10px;" src="images/pirate-at-pc.png"></p>
+<p><strong>Pirate Vision</strong> is an emerging vintage technology that exploits <a href="https://en.wikipedia.org/wiki/Pulfrich_effect">the Pulfrich effect</a> for viewing molecular structures (e.g. protein structures) in 3D.</p>
+<p>Basic idea - open a molecular structure in some viewer, set the animation to spin, cover one eye with a filter (e.g. put on sunglasses with one lence removed), and experience the 3D perception.</p>
+<p>Spinning direction matters: if your left eye is covered - spin left, if your right eye is covered - spin right.</p>
+<p><img style="width:500px;margin:10px;" src="images/pirate-classroom-smaller.png"></p>
+<p>It is called <strong>Pirate Vision</strong> because when one of your eyes is covered, you look like a pirate.</p>
+<p>This page describes how to setup and use <strong>Pirate Vision</strong> with some popular molecular viewers.</p>
+<p>Just break some sunglasses and try it!</p>
+<h2 id="equipment">Equipment</h2>
+<p>Sunglasses that cover only a single eye. For example, ordinary sunglasses with one lense removed. Or a tintend monocle.</p>
+<p><img style="width:350px;margin:5px;" src="images/equipment-single-eye-filter.png"></p>
+<p>Molecular viewer software (not necessarily pirated, can be free or even legally purchased) able to do spinning animation.</p>
+<p><img style="width:350px;margin:5px;" src="images/equipment-molecular-viewer.png"></p>
+<p>Both eyes (apologies to real pirates with just a single eye).</p>
+<p><img style="width:350px;margin:5px;" src="images/equipment-both-eyes.png"></p>
+<h2 id="recipes-for-popular-molecular-viewers">Recipes for popular molecular viewers</h2>
+<p>This section explains how to use <strong>Pirate Vision</strong> with the following popular molecular viewers:</p>
+<ul>
+<li>JMol</li>
+<li>PyMol</li>
+<li>ChimeraX</li>
+<li>Mol*</li>
+</ul>
+<h3 id="jmol">JMol</h3>
+<p>JMol is compatible with <strong>Pirate Vision</strong> out of the box - it has the <code>spin</code> command that can be used.</p>
+<p>Just load or fetch a structure, for example</p>
+<pre><code>load =2zsk</code></pre>
+<p>Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:</p>
+<pre><code>background white</code></pre>
+<p>Then, run the <code>spin</code> command, prividing speed (angles per second) as the only parameter.</p>
+<p>Pirates with a filter on the <strong>left</strong> eye should run <code>spin</code> with negative speed, for example:</p>
+<pre><code>spin y -90</code></pre>
+<p>Pirates with a filter on the <strong>right</strong> eye should run <code>spin</code> with positive speed, for example:</p>
+<pre><code>spin y 90</code></pre>
+<p>To stop, run:</p>
+<pre><code>spin off</code></pre>
+<h3 id="pymol">Pymol</h3>
+<p>First, let’s define the <code>pirate</code> command.</p>
+<p>Paste the following command to the Pymol command prompt:</p>
+<pre><code>python
+from pymol import cmd, util
+
+def pirate(speed=90):
+    speed = float(speed)
+
+    if speed == 0:
+        cmd.mstop()
+        return
+
+    fps = cmd.get_setting_float(&#39;movie_fps&#39;) or 30
+    frames = max(2, round(360 * fps / abs(speed)))
+
+    cmd.mstop()
+    cmd.mset(f&quot;1 x{frames}&quot;)
+    util.mroll(1, frames, 1, &#39;-y&#39; if speed &gt; 0 else &#39;y&#39;)
+    cmd.set(&#39;movie_loop&#39;, 1)
+    cmd.mplay()
+
+cmd.extend(&#39;pirate&#39;, pirate)
+python end</code></pre>
+<p>Alternatively, download the <a href="scripts/pymol_pirate_vision.py"><code>pymol_pirate_vision.py</code></a> script and run it:</p>
+<pre><code>run pymol_pirate_vision.py</code></pre>
+<p>Then load or fetch a structure, for example:</p>
+<pre><code>fetch 2zsk</code></pre>
+<p>Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:</p>
+<pre><code>bg_color white</code></pre>
+<p>Then, run the <code>pirate</code> command, prividing speed (angles per second) as the only parameter.</p>
+<p>Pirates with a filter on the <strong>left</strong> eye should run <code>pirate</code> with positive speed, for example:</p>
+<pre><code>pirate 90</code></pre>
+<p>Pirates with a filter on the <strong>right</strong> eye should run <code>pirate</code> with negative speed, for example:</p>
+<pre><code>pirate -90</code></pre>
+<p>To stop, run <code>pirate</code> with zero speed:</p>
+<pre><code>pirate 0</code></pre>
+<h3 id="chimerax">ChimeraX</h3>
+<p>First, let’s define the <code>pirate</code> command, using the following script:</p>
+<pre><code>from chimerax.core.commands import CmdDesc, FloatArg, register, run
+from chimerax.core.errors import UserError
+
+def pirate(session, speed=90):
+    try:
+        run(session, &quot;perframe stop&quot;)
+    except UserError as e:
+        if &quot;No per-frame command active&quot; not in str(e):
+            raise
+
+    if speed != 0:
+        run(session, f&#39;perframe &quot;turn y {-speed / 60}&quot;&#39;)
+
+register(
+    &#39;pirate&#39;,
+    CmdDesc(
+        optional=[(&#39;speed&#39;, FloatArg)],
+        synopsis=&#39;Spin the molecule for Pirate Vision&#39;
+    ),
+    pirate,
+    logger=session.logger
+)</code></pre>
+<p>Download this script as <a href="scripts/chimerax_pirate_vision.py"><code>chimerax_pirate_vision.py</code></a> and run it:</p>
+<pre><code>open chimerax_pirate_vision.py</code></pre>
+<p>Then load or fetch a structure, for example:</p>
+<pre><code>open 2zsk.cif</code></pre>
+<p>Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:</p>
+<pre><code>set bgColor white</code></pre>
+<p>Then, run the <code>pirate</code> command, prividing speed (angles per second) as the only parameter.</p>
+<p>Pirates with a filter on the <strong>left</strong> eye should run <code>pirate</code> with positive speed, for example:</p>
+<pre><code>pirate 90</code></pre>
+<p>Pirates with a filter on the <strong>right</strong> eye should run <code>pirate</code> with negative speed, for example:</p>
+<pre><code>pirate -90</code></pre>
+<p>To stop, run <code>pirate</code> with zero speed:</p>
+<pre><code>pirate 0</code></pre>
+<h3 id="mol">Mol*</h3>
+<p>Mol* is compatible with <strong>Pirate Vision</strong> out of the box - just not through scripting, but from GUI,</p>
+<p>Open a molecular structure in Mol*, for example, <a href="https://www.rcsb.org/3d-view/2ZSK">PDB 2ZSK</a>.</p>
+<p>Open the <em>“Settings/Control Info”</em> panel (the settings icon on the right border of the 3D scene, near the upper-right corner).</p>
+<p>Under <em>“Animate”</em>, select <em>“Spin”</em>.</p>
+<p>Using the config button that appears near near the selected <em>Spin</em> option, configure the spinning parameters:</p>
+<ul>
+<li>Set <em>“Axis”</em> to (<code>[0, 1, 0]</code>) for pirates with a filter on the <strong>right</strong> eye, or to (<code>[0, -1, 0]</code>) pirates with a filter on the <strong>right</strong> eye.</li>
+<li>Adjust <em>“Speed”</em> to your preference using the interactive slider. Note that setting negative speed reverses the spinning direction.</li>
+</ul>
+<p>The background can also be changed to white in the same settings panel.</p>
+<p>To stop spinning, change <em>“Animate”</em> to <em>“Off”</em>.</p>
+<p>Alternatively, press <code>i</code> to toggle spinning on or off - but the axis and the speed are preset when spin is toggled with <code>i</code>.</p>
+</body>
+</html>

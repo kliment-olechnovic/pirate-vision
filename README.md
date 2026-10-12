@@ -1,6 +1,6 @@
-# Pirate Vision
+## Idea
 
-<img style="width:500px;margin:20px;" src="images/pirate-at-pc.png">
+<img style="width:500px;margin:10px;" src="images/pirate-at-pc.png">
 
 **Pirate Vision** is an emerging vintage technology that exploits [the Pulfrich effect](https://en.wikipedia.org/wiki/Pulfrich_effect) for viewing molecular structures (e.g. protein structures) in 3D.
 
@@ -8,7 +8,7 @@ Basic idea - open a molecular structure in some viewer, set the animation to spi
 
 Spinning direction matters: if your left eye is covered - spin left, if your right eye is covered - spin right.
 
-<img style="width:500px;margin:20px;" src="images/pirate-classroom-smaller.png">
+<img style="width:500px;margin:10px;" src="images/pirate-classroom-smaller.png">
 
 It is called **Pirate Vision** because when one of your eyes is covered, you look like a pirate.
 
@@ -20,15 +20,15 @@ Just break some sunglasses and try it!
 
 Sunglasses that cover only a single eye. For example, ordinary sunglasses with one lense removed. Or a tintend monocle.
 
-<img style="width:300px;margin:5px;" src="images/equipment-single-eye-filter.png">
+<img style="width:350px;margin:5px;" src="images/equipment-single-eye-filter.png">
 
 Molecular viewer software (not necessarily pirated, can be free or even legally purchased) able to do spinning animation.
 
-<img style="width:300px;margin:5px;" src="images/equipment-molecular-viewer.png">
+<img style="width:350px;margin:5px;" src="images/equipment-molecular-viewer.png">
 
 Both eyes (apologies to real pirates with just a single eye).
 
-<img style="width:300px;margin:5px;" src="images/equipment-both-eyes.png">
+<img style="width:350px;margin:5px;" src="images/equipment-both-eyes.png">
 
 ## Recipes for popular molecular viewers
 
