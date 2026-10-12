@@ -1,6 +1,6 @@
 # Pirate Vision
 
-**Pirate Vision** is a vintage technology that exploits [the Pulfrich effect](https://en.wikipedia.org/wiki/Pulfrich_effect) for viewing molecular structures (e.g. protein structures) in 3D.
+**Pirate Vision** is an emerging vintage technology that exploits [the Pulfrich effect](https://en.wikipedia.org/wiki/Pulfrich_effect) for viewing molecular structures (e.g. protein structures) in 3D.
 
 Basic idea - open a molecular structure in some viewer, set the animation to spin, cover one eye with a filter (e.g. put on sunglasses with one lence removed), and experience the 3D perception.
 
@@ -18,6 +18,48 @@ This page describes how to setup and use **Pirate Vision** with some popular mol
 * Both eyes (apologies to real pirates with just a single eye).
 
 ## Recipes for popular molecular viewers
+
+This section explains how to use **Pirate Vision** with the following popular molecular viewers:
+
+* JMol
+* PyMol
+* ChimeraX
+
+## JMol
+
+JMol is compatible with **Pirate Vision** out of the box - it has the `spin` command that can be used.
+
+Just load or fetch a structure, for example
+
+```
+load =2zsk
+```
+
+Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:
+
+```
+background white
+```
+
+Then, run the `spin` command, prividing speed (angles per second) as the only parameter.
+
+Pirates with a filter on the **left** eye should run `spin` with negative speed, for example:
+
+```
+spin y -90
+```
+
+Pirates with a filter on the **right** eye should run `spin` with positive speed, for example:
+
+```
+spin y 90
+```
+
+To stop, run:
+
+```
+spin off
+```
 
 ### Pymol
 
@@ -55,13 +97,13 @@ Alternatively, download the [`pymol_pirate_vision.py`](scripts/pymol_pirate_visi
 run pymol_pirate_vision.py
 ```
 
-The load or fetch a structure, for example:
+Then load or fetch a structure, for example:
 
 ```
 fetch 2zsk
 ```
 
-Setup the view in any way you wish (it also can be adjusted an any time later) It is recommended (but not super necessary) to set the background to white:
+Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:
 
 ```
 bg_color white
@@ -122,13 +164,13 @@ Download this script as [`chimerax_pirate_vision.py`](scripts/chimerax_pirate_vi
 open chimerax_pirate_vision.py
 ```
 
-The load or fetch a structure, for example:
+Then load or fetch a structure, for example:
 
 ```
 open 2zsk.cif
 ```
 
-Setup the view in any way you wish (it also can be adjusted an any time later) It is recommended (but not super necessary) to set the background to white:
+Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:
 
 ```
 set bgColor white
@@ -153,3 +195,4 @@ To stop, run `pirate` with zero speed:
 ```
 pirate 0
 ```
+
