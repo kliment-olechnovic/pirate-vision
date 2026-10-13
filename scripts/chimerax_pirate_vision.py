@@ -9,7 +9,7 @@ def pirate(session, speed=90):
             raise
 
     if speed != 0:
-        run(session, f'perframe "turn y {-speed / 60}"')
+        run(session, f'perframe "turn y {speed / 60}"')
 
 register(
     'pirate',

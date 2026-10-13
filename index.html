@@ -105,7 +105,7 @@ def pirate(speed=90):
 
     cmd.mstop()
     cmd.mset(f&quot;1 x{frames}&quot;)
-    util.mroll(1, frames, 1, &#39;-y&#39; if speed &gt; 0 else &#39;y&#39;)
+    util.mroll(1, frames, 1, &#39;y&#39; if speed &gt; 0 else &#39;-y&#39;)
     cmd.set(&#39;movie_loop&#39;, 1)
     cmd.mplay()
 
@@ -118,10 +118,10 @@ python end</code></pre>
 <p>Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:</p>
 <pre><code>bg_color white</code></pre>
 <p>Then, run the <code>pirate</code> command, prividing speed (angles per second) as the only parameter.</p>
-<p>Pirates with a filter on the <strong>left</strong> eye should run <code>pirate</code> with positive speed, for example:</p>
-<pre><code>pirate 90</code></pre>
-<p>Pirates with a filter on the <strong>right</strong> eye should run <code>pirate</code> with negative speed, for example:</p>
+<p>Pirates with a filter on the <strong>left</strong> eye should run <code>pirate</code> with negative speed, for example:</p>
 <pre><code>pirate -90</code></pre>
+<p>Pirates with a filter on the <strong>right</strong> eye should run <code>pirate</code> with positive speed, for example:</p>
+<pre><code>pirate 90</code></pre>
 <p>To stop, run <code>pirate</code> with zero speed:</p>
 <pre><code>pirate 0</code></pre>
 </section>
@@ -139,7 +139,7 @@ def pirate(session, speed=90):
             raise
 
     if speed != 0:
-        run(session, f&#39;perframe &quot;turn y {-speed / 60}&quot;&#39;)
+        run(session, f&#39;perframe &quot;turn y {speed / 60}&quot;&#39;)
 
 register(
     &#39;pirate&#39;,
@@ -157,10 +157,10 @@ register(
 <p>Setup the view in any way you wish (it also can be adjusted an any time later). It is recommended (but not super necessary) to set the background to white:</p>
 <pre><code>set bgColor white</code></pre>
 <p>Then, run the <code>pirate</code> command, prividing speed (angles per second) as the only parameter.</p>
-<p>Pirates with a filter on the <strong>left</strong> eye should run <code>pirate</code> with positive speed, for example:</p>
-<pre><code>pirate 90</code></pre>
-<p>Pirates with a filter on the <strong>right</strong> eye should run <code>pirate</code> with negative speed, for example:</p>
+<p>Pirates with a filter on the <strong>left</strong> eye should run <code>pirate</code> with negative speed, for example:</p>
 <pre><code>pirate -90</code></pre>
+<p>Pirates with a filter on the <strong>right</strong> eye should run <code>pirate</code> with positive speed, for example:</p>
+<pre><code>pirate 90</code></pre>
 <p>To stop, run <code>pirate</code> with zero speed:</p>
 <pre><code>pirate 0</code></pre>
 </section>

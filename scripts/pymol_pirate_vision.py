@@ -12,7 +12,7 @@ def pirate(speed=90):
 
     cmd.mstop()
     cmd.mset(f"1 x{frames}")
-    util.mroll(1, frames, 1, '-y' if speed > 0 else 'y')
+    util.mroll(1, frames, 1, 'y' if speed > 0 else '-y')
     cmd.set('movie_loop', 1)
     cmd.mplay()
 

@@ -99,7 +99,7 @@ def pirate(speed=90):
 
     cmd.mstop()
     cmd.mset(f"1 x{frames}")
-    util.mroll(1, frames, 1, '-y' if speed > 0 else 'y')
+    util.mroll(1, frames, 1, 'y' if speed > 0 else '-y')
     cmd.set('movie_loop', 1)
     cmd.mplay()
 
@@ -127,16 +127,16 @@ bg_color white
 
 Then, run the `pirate` command, prividing speed (angles per second) as the only parameter.
 
-Pirates with a filter on the **left** eye should run `pirate` with positive speed, for example:
-
-```
-pirate 90
-```
-
-Pirates with a filter on the **right** eye should run `pirate` with negative speed, for example:
+Pirates with a filter on the **left** eye should run `pirate` with negative speed, for example:
 
 ```
 pirate -90
+```
+
+Pirates with a filter on the **right** eye should run `pirate` with positive speed, for example:
+
+```
+pirate 90
 ```
 
 To stop, run `pirate` with zero speed:
@@ -161,7 +161,7 @@ def pirate(session, speed=90):
             raise
 
     if speed != 0:
-        run(session, f'perframe "turn y {-speed / 60}"')
+        run(session, f'perframe "turn y {speed / 60}"')
 
 register(
     'pirate',
@@ -194,16 +194,16 @@ set bgColor white
 
 Then, run the `pirate` command, prividing speed (angles per second) as the only parameter.
 
-Pirates with a filter on the **left** eye should run `pirate` with positive speed, for example:
-
-```
-pirate 90
-```
-
-Pirates with a filter on the **right** eye should run `pirate` with negative speed, for example:
+Pirates with a filter on the **left** eye should run `pirate` with negative speed, for example:
 
 ```
 pirate -90
+```
+
+Pirates with a filter on the **right** eye should run `pirate` with positive speed, for example:
+
+```
+pirate 90
 ```
 
 To stop, run `pirate` with zero speed:
@@ -224,7 +224,7 @@ Under *"Animate"*, select *"Spin"*.
 
 Using the config button that appears near near the selected *Spin* option, configure the spinning parameters:
 
-* Set *"Axis"* to (`[0, 1, 0]`) for pirates with a filter on the **right** eye, or to (`[0, -1, 0]`) pirates with a filter on the **right** eye.
+* Set *"Axis"* to (`[0, 1, 0]`) for pirates with a filter on the **right** eye, or to (`[0, -1, 0]`) pirates with a filter on the **left** eye.
 * Adjust *"Speed"* to your preference using the interactive slider. Note that setting negative speed reverses the spinning direction.
 
 The background can also be changed to white in the same settings panel.
