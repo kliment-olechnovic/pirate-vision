@@ -344,3 +344,15 @@ pre code { color: inherit; padding: 0; border: 0; background: none; font: inheri
   pre { background: #eee; color: black; box-shadow: none; white-space: pre-wrap; }
   a { color: black; }
 }
+
+video {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 1.5rem auto;
+  border: 3px solid var(--line);
+  border-radius: 6px;
+  background: white;
+}
+

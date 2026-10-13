@@ -18,6 +18,14 @@ It also works very well in a classsrom setting.
 
 <img style="width:500px;margin:10px;" src="images/pirate-classroom-smaller.png">
 
+## Spinning example
+
+Here is a video of a protein spinning, to be viewed with a filter on the **left** eye:
+
+<video autoplay loop muted playsinline controls style="width:100%; max-width:600px; height:auto;">
+  <source src="images/pirate-vision.mp4" type="video/mp4">
+</video>
+
 ## Equipment
 
 Sunglasses that cover only a single eye. For example, ordinary sunglasses with one lense removed. Or a tintend monocle.
